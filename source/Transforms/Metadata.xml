@@ -1,0 +1,63 @@
+<metadata>
+  	<remove-node path="/api/package[@name='c.mpayments.android.dialog']" />
+  	
+  	<!--
+		<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseSuccessEventArgs']" />
+		<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchasePendingEventArgs']" />
+		<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseFailedEventArgs']" />
+		<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseCanceledEventArgs']" />
+ 	-->
+  	
+  	<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='BillingActivity']" />
+  	<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='SubscriptionManager']" />
+ 	<remove-node path="/api/package[@name='c.mpayments.android']/interface[@name='ServiceAvailabilityListener']" />
+ 	<remove-node path="/api/package[@name='c.mpayments.android']/interface[@name='UnsubscribeListener']" />
+  	
+  	<attr path="/api/package[@name='c.mpayments.android']" name="managedName">Infobip.Mpayments</attr>
+  	<attr path="/api/package[@name='c.mpayments.android.util']" name="managedName">Infobip.Mpayments.Util</attr>
+
+  	<!-- 	  PURCHASE MANAGER		-->
+  	<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseManager']/method[@name='checkServiceAvailabilityAsync']" />
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseManager']/method[@name='startPurchase']/parameter[@name='p0']" name="name">purchaseRequest</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseManager']/method[@name='startPurchase']/parameter[@name='p1']" name="name">context</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseManager']/method[@name='attachPurchaseListener']/parameter[@name='p0']" name="name">purchaseListener</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseManager']/method[@name='checkPendingTransaction']/parameter[@name='p0']" name="name">context</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseManager']/method[@name='checkPendingTransaction' and count(parameter)=2]/parameter[@name='p1']" name="name">languageCode</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseManager']/method[@name='hasPendingTransactions']/parameter[@name='p0']" name="name">context</attr>
+  		<!-- OPTIONAL -->
+	  	<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseManager']/field[@final='true']" />
+	  	<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseManager']/method[@name='checkServiceAvailability']" />
+	  	<!--
+		  	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseManager']/method[@name='checkServiceAvailability']/parameter[@name='p0']" name="name">apiKey</attr>
+			<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseManager']/method[@name='checkServiceAvailability']/parameter[@name='p1']" name="name">context</attr>
+		-->
+	
+	<!-- 	 LOGGER		-->
+	<remove-node path="/api/package[@name='c.mpayments.android.util']/class[@name='Logger']/method[not(@name='setDebugModeEnabled')]" />
+	<attr path="/api/package[@name='c.mpayments.android.util']/class[@name='Logger']/method[@name='setDebugModeEnabled']/parameter[@name='p0']" name="name">debugModeEnabled</attr>
+	
+	<!-- 	  PURCHASE REQUEST		-->
+	<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseRequest']/field" />
+	<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseRequest']/method[@name='setItemName' or @name='getItemName']" />
+	<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseRequest']/method[@name='setTitleString' or @name='getTitleString']" />
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseRequest']/constructor[@name='PurchaseRequest' and count(parameter)=1]/parameter[@name='p0']" name="name">apiKey</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseRequest']/constructor[count(parameter)=1]/parameter[@name='p0']" name="name">apiKey</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseRequest']/constructor[count(parameter)=2]/parameter[@name='p0']" name="name">apiKey</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseRequest']/constructor[count(parameter)=2]/parameter[@name='p1' and @type='java.lang.Double']" name="name">price</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseRequest']/constructor[count(parameter)=2]/parameter[@name='p1' and @type='int']" name="name">packageIndex</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseRequest']/constructor[count(parameter)=3]/parameter[@name='p0']" name="name">apiKey</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseRequest']/constructor[count(parameter)=3]/parameter[@name='p1']" name="name">titleString</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseRequest']/constructor[count(parameter)=3]/parameter[@name='p2']" name="name">itemName</attr>
+	
+	<!-- 	 PURCHASE RESPONSE		-->
+	<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseResponse']/field" />
+	<remove-node path="/api/package[@name='c.mpayments.android']/class[@name='PurchaseResponse']/method[@name='setInterval' or @name='getInterval']" />
+	
+	<!-- 	 PURCHASE LISTENER		-->
+	<attr path="/api/package[@name='c.mpayments.android']/interface[@name='PurchaseListener']/method[@name='onPurchaseCanceled']/parameter[@name='p0']" name="name">purchaseResponse</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/interface[@name='PurchaseListener']/method[@name='onPurchaseFailed']/parameter[@name='p0']" name="name">purchaseResponse</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/interface[@name='PurchaseListener']/method[@name='onPurchasePending']/parameter[@name='p0']" name="name">purchaseResponse</attr>
+	<attr path="/api/package[@name='c.mpayments.android']/interface[@name='PurchaseListener']/method[@name='onPurchaseSuccess']/parameter[@name='p0']" name="name">purchaseResponse</attr>
+	<!-- <attr path="/api/package[@name='c.mpayments.android']/interface[@name='PurchaseListener']/method[@name='onPurchaseCanceled']" name="name">onPurchaseCancelled</attr> -->
+	
+</metadata>
